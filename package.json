@@ -31,5 +31,5 @@
     "@oxc-parser/binding-darwin-arm64": "^0.99.0",
     "@oxc-transform/binding-darwin-arm64": "^0.99.0",
     "zod": "^3.23.8"
-  },
+  }
 }
