@@ -199,7 +199,7 @@
 <script setup lang="ts">
 import Button from "~/components/elements/Button.vue";
 
-const URL = "https://formspree.io/f/xpwobeqr";
+const URL = "https://formspree.io/f/xzzngzkd";
 
 // Form data
 const name = ref("");
