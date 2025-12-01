@@ -1,78 +1,21 @@
 <template>
   <div class="flex flex-col w-full gap-8 font-bricolage text-[#4A235A] bg-[#F3EFE0] p-6 md:p-10 rounded-[2rem]">
 
-    <div class="flex flex-row items-center justify-between w-full h-12">
-
-      <div class="flex items-center gap-4" v-if="illustrationsToShow.length > 1">
-
-        <Button @click="prevSlide"
-                class="!p-3 w-12 h-12 rounded-full bg-[#4A235A] hover:bg-[#4A235A]/90 transition-transform hover:scale-105 shadow-md flex items-center justify-center"
-                name="précédent" aria-label="précédent">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#F3EFE0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </Button>
-
-        <span class="text-sm font-bold tracking-widest opacity-70 tabular-nums">
-          {{ currentSlide + 1 }} / {{ illustrationsToShow.length }}
-        </span>
-
-        <Button @click="nextSlide"
-                class="!p-3 w-12 h-12 rounded-full bg-[#4A235A] hover:bg-[#4A235A]/90 transition-transform hover:scale-105 shadow-md flex items-center justify-center"
-                name="suivant" aria-label="suivant">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#F3EFE0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </Button>
-      </div>
-
-      <div v-else></div> <button
-        @click="shareProject"
-        :class="copied
-            ? 'bg-[#4A235A] text-[#F3EFE0] border-[#4A235A]'
-            : 'bg-transparent text-[#4A235A] border-[#4A235A] hover:bg-[#4A235A]/5'"
-        class="flex items-center gap-2 px-5 py-2 rounded-full border-2 transition-all duration-300 group font-bold uppercase tracking-wide text-xs sm:text-sm h-10">
-
-      <svg v-if="!copied" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 group-hover:scale-110 transition-transform">
-        <circle cx="18" cy="5" r="3"></circle>
-        <circle cx="6" cy="12" r="3"></circle>
-        <circle cx="18" cy="19" r="3"></circle>
-        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-      </svg>
-
-      <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-
-      <span class="hidden sm:inline">{{ copied ? 'Copié !' : 'Partager' }}</span>
-    </button>
-    </div>
-
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
-      <div class="w-full h-full min-h-[400px] lg:min-h-[500px] bg-white border-2 border-[#4A235A]/10 rounded-3xl overflow-hidden shadow-lg relative flex flex-col justify-center">
-
-        <Carousel v-if="illustrationsToShow.length > 0"
-                  :items-to-show="1"
-                  :gap="0"
-                  :wrap-around="true"
-                  v-model="currentSlide"
-                  class="w-full h-full absolute inset-0">
-          <Slide v-for="(illustration, index) in illustrationsToShow"
-                 :key="index"
-                 class="w-full h-full flex items-center justify-center p-4">
-            <Illustration :illustration="illustration" full class="max-w-full max-h-full object-contain drop-shadow-sm"/>
-          </Slide>
-        </Carousel>
-
-        <div v-else class="w-full h-full flex items-center justify-center bg-gray-100 text-[#4A235A]/50">
-          <p class="font-bold">Aucune image disponible</p>
+      <div class="w-full h-full min-h-[300px] lg:min-h-[400px] bg-white border-2 border-[#4A235A]/10 rounded-3xl overflow-hidden shadow-lg flex items-center justify-center p-4">
+        <NuxtImg
+            v-if="project.image"
+            :src="project.image"
+            :alt="project.title"
+            class="w-full h-full object-contain max-h-[600px]"
+        />
+        <div v-else class="text-[#4A235A]/50 font-bold">
+          Aucune image disponible
         </div>
       </div>
 
       <div class="flex flex-col gap-8 w-full">
-
         <div>
           <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight leading-none mb-6">
             {{ project.title }}
@@ -92,7 +35,6 @@
 
           <ProjectTechnologies v-if="numberOfLinks < 1" :project="project" class="mt-6"/>
         </div>
-
       </div>
     </div>
 

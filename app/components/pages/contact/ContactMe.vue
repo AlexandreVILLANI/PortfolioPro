@@ -27,14 +27,21 @@
 
         <div class="flex flex-col gap-4 mt-4">
           <h3 class="text-[#4A235A] text-xl font-bold uppercase tracking-wider">Mon Parcours</h3>
-          <NuxtLink to="/cv.pdf" target="_blank" external class="w-fit">
-            <Button class="group flex flex-row items-center gap-4 bg-[#4A235A] text-[#F3EFE0] px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-2 border-[#4A235A] hover:bg-transparent hover:text-[#4A235A]">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="fill-current transition-colors">
+          
+          <a href="/documents/CV_Alexandre_VILLANI.pdf" target="_blank" rel="noopener noreferrer" class="w-fit decoration-0">
+            
+            <Button class="group flex flex-row items-center gap-4 !bg-[#F3EFE0] px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-2 border-[#4A235A] hover:!bg-[#4A235A]">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" 
+                   class="fill-[#4A235A] group-hover:fill-[#F3EFE0] transition-colors duration-300">
                 <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
               </svg>
-              <span class="text-lg font-bold uppercase tracking-widest">Télécharger mon CV</span>
+              
+              <span class="text-lg font-bold uppercase tracking-widest text-[#4A235A] group-hover:text-[#F3EFE0] transition-colors duration-300">
+                Télécharger mon CV
+              </span>
             </Button>
-          </NuxtLink>
+          </a>
         </div>
 
         <div
