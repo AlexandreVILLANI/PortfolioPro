@@ -43,9 +43,8 @@ export default defineNuxtConfig({
         blockAiBots: true,
     },
     site: {
-        url: "https://cedriccolin.fr",
-        name: "Cédric COLIN | Portfolio",
-        description: "Portfolio de Cédric COLIN, Développeur FullStack. Je transforme des problèmes complexes en applications fonctionnelles et robustes.",
+        name: "Alexandre VILLANI - Portfolio",
+        description: "Portfolio de Alexandre VILLANI, Développeur FullStack. Découvrez mes projets.",
         defaultLocale: "fr",
         locale: "fr"
     },

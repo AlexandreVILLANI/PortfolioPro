@@ -15,7 +15,7 @@ export interface SeoConfig {
  * Configuration SEO par défaut pour le site
  */
 export const defaultSeoConfig = {
-    siteName: "Alexandre VILLANI | Portfolio",
+    siteName: "Alexandre VILLANI - Portfolio",
     author: "Alexandre VILLANI",
     defaultImage: "/og/default.jpg",
     locale: "fr_FR"
