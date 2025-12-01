@@ -2,12 +2,23 @@
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
+    
+    // Optimisation CSS pour éviter le blocage du rendu (Ton problème de vitesse)
+    experimental: {
+        inlineSSRStyles: true // Injecte le CSS critique directement dans le HTML
+    },
+    vite: {
+        build: {
+            cssCodeSplit: true // Divise le CSS par page pour charger moins de code
+        }
+    },
+
     modules: [
         'nuxt-skew-protection',
         'nuxt-og-image',
         'nuxt-link-checker',
         '@nuxt/image',
-        '@nuxt/fonts',
+        '@nuxt/fonts', // Ce module gère auto le téléchargement et l'optimisation
         '@nuxtjs/tailwindcss',
         '@nuxtjs/sitemap',
         '@nuxtjs/robots',
@@ -17,6 +28,12 @@ export default defineNuxtConfig({
     app: {
         baseURL: '/',
         pageTransition: {name: 'page', mode: 'out-in'},
+        head: {
+            // Préchargement pour la vitesse
+            link: [
+                { rel: 'icon', type: 'image/jpeg', href: '/images/logo.jpg' }
+            ]
+        }
     },
     nitro: {
         prerender: {
@@ -53,18 +70,27 @@ export default defineNuxtConfig({
             scrollBehaviorType: 'smooth'
         }
     },
+    
+    // CONFIGURATION DES POLICES (Remplace l'ancien import CSS)
     fonts: {
         families: [
             {
-                name: 'Nunito',
+                name: 'Bricolage Grotesque',
                 provider: 'google',
-                weights: ['200', '300', '400', '500', '600', '700', '800', '900'],
+                // On charge tous les poids utilisés dans ton design
+                weights: ['200', '300', '400', '500', '600', '700', '800'],
+            },
+            {
+                name: 'EB Garamond',
+                provider: 'google',
+                weights: ['400', '500', '600', '700'],
                 styles: ['italic', 'normal']
             }
         ],
         defaults: {
             fallbacks: {
-                'sans-serif': ['Nunito', 'Arial', 'sans-serif'],
+                'sans-serif': ['Bricolage Grotesque', 'Arial', 'sans-serif'],
+                'serif': ['EB Garamond', 'Times New Roman', 'serif']
             }
         }
     }
