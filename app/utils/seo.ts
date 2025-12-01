@@ -16,7 +16,6 @@ export interface SeoConfig {
  */
 export const defaultSeoConfig = {
     siteName: "Alexandre VILLANI | Portfolio",
-    siteUrl: "https://cedriccolin.fr",
     author: "Alexandre VILLANI",
     defaultImage: "/og/default.jpg",
     locale: "fr_FR"

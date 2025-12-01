@@ -98,7 +98,7 @@
             <ul class="contact-list">
               <li><a href="mailto:alexandre.villani@edu.univ-fcomte.fr">email</a></li>
               <li><a href="https://www.linkedin.com/in/alexandre-villani-ab0889326/">linkedin</a></li>
-              <li><a href="/cv.pdf">resumé</a></li>
+              <li><a href="/documents/CV_Alexandre_VILLANI.pdf">resumé</a></li>
             </ul>
           </div>
 
