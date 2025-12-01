@@ -18,32 +18,37 @@ team:
 date: 2025-11-15T12:56:10.000Z
 ---
 
-# IronFitness : Le sport à Ronchamp
+> Votre salle de sport à Ronchamp - Activités collectives ou individuelles pour se remettre en forme, se dépasser et prendre soin de sa santé.
 
-> **Votre salle de sport à Ronchamp - Activités collectives ou individuelles pour se remettre en forme, se dépasser et prendre soin de sa santé.**
+# IronFitness : Digitaliser l'expérience sportive
 
-Ce projet est une solution web complète développée pour **IronFitness**, une salle de sport située à Ronchamp. L'ambition était de dépasser le simple site vitrine pour créer un véritable écosystème numérique. La plateforme sert à la fois d'outil marketing pour attirer les nouveaux membres et d'outil de gestion quotidien pour le fonctionnement de la salle.
+**Plus qu'un site vitrine, IronFitness est le moteur numérique de la salle.** Ce projet avait pour ambition de créer un véritable écosystème digital pour accompagner l'ouverture de cette salle de sport à Ronchamp.
+
+La plateforme joue un double rôle critique : c'est un **outil marketing** puissant pour l'acquisition de nouveaux membres, mais aussi un **ERP métier** complet pour la gestion quotidienne des plannings et des adhérents.
 
 ---
 
 <Tondeuse image="/images/projects/IronFitness/dashboard.jpg" ratio="1/3">
 
-## Une plateforme, trois dimensions
+## Un écosystème en trois dimensions
 
-Le site a été conçu pour répondre aux besoins de trois types d'utilisateurs distincts, avec une attention particulière portée à la gestion interne.
+L'architecture du site a été pensée pour servir trois audiences distinctes avec des interfaces dédiées :
 
-1.  **Pour les Visiteurs (Vitrine) :** Une interface immersive présentant les différents cours, la boutique de produits et les formules d'abonnement.
-2.  **Pour les Adhérents (Espace Membre) :** Une fois connecté, l'utilisateur accède à des fonctionnalités avancées : consultation du planning interactif en temps réel, gestion de ses cours personnalisés et suivi de son activité.
-3.  **Pour le gérant (Administration) :** Comme illustré ci-contre, un back-office puissant rend le site entièrement modulaire. L'administrateur peut gérer le contenu, mettre à jour les plannings, ajouter des produits ou modifier les abonnements en toute autonomie, sans toucher au code.
+1.  **Vitrine (Visiteurs) :** Une interface immersive pensée pour la conversion. Elle présente les coachs, les équipements et les abonnements avec un design dynamique pour inciter à l'inscription.
+2.  **Espace Membre (Adhérents) :** Un tableau de bord personnel. Une fois connecté, l'utilisateur gère son profil, consulte le **planning temps réel** et réserve sa place aux cours collectifs (Zumba, Cross-training).
+3.  **Back-Office (Administration) :** Le centre de contrôle. Comme illustré ci-contre, cette interface permet au gérant de piloter la salle en toute autonomie : modification des créneaux horaires, gestion des stocks boutique et administration des droits utilisateurs.
 
 </Tondeuse>
 
 ---
 
-## Stack Technique
+## Stack Technique Détaillée
 
-Pour supporter cette logique métier complexe (gestion utilisateurs, plannings dynamiques, catalogue), l'application repose sur une architecture robuste :
+Pour supporter les contraintes de temps réel (réservation de cours) et de fiabilité des données, nous avons opté pour une architecture moderne :
 
-* **Vue.js :** Pour une expérience utilisateur fluide et réactive, essentielle pour la navigation dans les plannings.
-* **Node.js :** Pour un backend performant capable de gérer les authentifications et la logique de réservation.
-* **PostgreSQL :** Pour structurer et sécuriser les données critiques (comptes utilisateurs, transactions, historique des cours).
+| Domaine | Technologie | Rôle principal |
+| :--- | :--- | :--- |
+| **Frontend** | Vue.js | Interface réactive et navigation fluide (SPA) |
+| **Backend** | Node.js | API performante et gestion des authentifications |
+| **Base de données** | PostgreSQL | Stockage relationnel sécurisé (Transactions, Planning) |
+| **Architecture** | Fullstack | Séparation claire entre client et serveur |
