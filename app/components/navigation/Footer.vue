@@ -44,8 +44,7 @@
 const navLinks = [
   {path: '/', label: 'Accueil'},
   {path: '/projects', label: 'Projets'},
-  {path: '/about-me', label: 'À propos'},
-  {path: '/contact', label: 'Contact'}
+  {path: '/about-me', label: 'À propos'}
 ];
 </script>
 

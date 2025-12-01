@@ -93,7 +93,7 @@
                 L'Escala - Espagne
               </h4>
               <p class="text-[#F3EFE0]/80 font-serif italic text-lg mt-2">
-                « Le vrai voyageur ne sait pas où il va. » Lao Tseu <br>
+                « La mer, une fois qu’elle vous a ensorcelé, vous tient dans son filet pour toujours. » Jacques-Yves Cousteau <br>
                 <span class="text-sm opacity-60 not-italic font-sans">Photographie personnelle</span>
               </p>
             </div>

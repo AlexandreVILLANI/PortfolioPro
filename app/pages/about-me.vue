@@ -142,7 +142,7 @@
                 Planche de surf - Strip Project
               </h4>
               <p class="text-[#FEFBF3]/80 font-serif italic text-lg mt-2">
-                « La mer est un miroir dans lequel chacun peut reconnaître son âme. » Paul Claudel <br>
+                « Le surf n’est pas un sport, c’est un style de vie. » Kelly Slater <br>
                 <span class="text-sm opacity-60 not-italic font-sans">Photographie personnelle</span>
               </p>
             </div>

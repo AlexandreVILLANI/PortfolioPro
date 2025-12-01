@@ -1,13 +1,28 @@
 <template>
-  <div class="min-h-screen w-full bg-[#F3EFE0] pt-32 pb-20 px-4 md:px-10 font-bricolage overflow-x-hidden">
+  <div class="min-h-screen w-full bg-[#F3EFE0] pt-32 pb-20 px-4 md:px-10 font-bricolage overflow-x-hidden relative">
 
-    <div class="max-w-4xl mx-auto text-center mb-12">
-      <h1 class="text-5xl md:text-7xl font-black text-[#4A235A] uppercase tracking-tighter mb-4">
-        Mes Projets
-      </h1>
-      <p class="text-[#4A235A]/70 text-lg font-medium max-w-2xl mx-auto">
-        Une sélection de mes travaux récents, allant du développement web aux applications complexes.
-      </p>
+    <div class="max-w-6xl mx-auto text-center mb-12 relative flex items-center justify-center">
+      
+      <div 
+        @click="isLightboxOpen = true"
+        class="absolute left-0 top-2 w-40 -rotate-6 hover:rotate-0 transition-transform duration-300 cursor-pointer group z-10 hidden lg:block"
+      >
+        <div class="bg-white p-2 pb-6 shadow-lg border border-[#4A235A]/10 relative">
+           <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-5 bg-white/50 backdrop-blur-sm shadow-sm rotate-2"></div>
+           <NuxtImg src="/images/background/motocross.jpg" class="w-full h-auto filter sepia-[0.3] group-hover:sepia-0 transition-all"/>
+           <p class="text-center font-serif text-[10px] text-gray-500 mt-2">Cliquez pour agrandir</p>
+        </div>
+      </div>
+
+      <div class="max-w-4xl px-4">
+        <h1 class="text-5xl md:text-7xl font-black text-[#4A235A] uppercase tracking-tighter mb-4">
+          Mes Projets
+        </h1>
+        <p class="text-[#4A235A]/70 text-lg font-medium">
+          Une sélection de mes travaux récents, allant du développement web aux applications complexes.
+        </p>
+      </div>
+
     </div>
 
     <section class="w-full max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 mb-16">
@@ -24,7 +39,7 @@
       </button>
     </section>
 
-    <section class="w-full max-w-7xl mx-auto mb-20">
+    <section class="w-full max-w-7xl mx-auto mb-20 relative">
 
       <TransitionGroup
           name="project-list"
@@ -56,12 +71,51 @@
 
     </section>
 
+    <Teleport to="body">
+      <Transition name="fade">
+        <div
+            v-if="isLightboxOpen"
+            class="fixed inset-0 z-[9999] flex items-center justify-center bg-[#784421]/90 backdrop-blur-sm p-4"
+            @click.self="isLightboxOpen = false"
+        >
+          <div class="relative max-w-5xl w-full flex flex-col items-center">
+            
+            <button
+                @click="isLightboxOpen = false"
+                class="absolute -top-12 right-0 md:-right-8 text-[#FEFBF3] hover:text-white hover:scale-110 transition-transform"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </button>
+            
+            <div class="bg-[#FEFBF3] p-2 md:p-4 rounded shadow-2xl">
+              <NuxtImg
+                  src="/images/background/motocross.jpg"
+                  alt="motocross"
+                  class="max-h-[70vh] w-auto object-contain rounded-sm"
+              />
+            </div>
+            
+            <div class="mt-6 text-center">
+              <h4 class="text-2xl md:text-3xl text-[#FEFBF3] font-bricolage font-bold uppercase tracking-widest">
+                MotoCross - Mandeure
+              </h4>
+              <p class="text-[#FEFBF3]/80 font-serif italic text-lg mt-2">
+               « Je ne vole pas… je me laisse porter par le moment. » Robbie Maddison <br>
+                <span class="text-sm opacity-60 not-italic font-sans">Photographie personnelle</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
   </div>
 </template>
 
 <script setup lang="ts">
 import {getProjects, prepareProjectLinks, prepareProjectPath, type ProjectCategory, categories} from "~/utils/projects";
 import ProjectCard from "~/components/pages/projects/ProjectCard.vue";
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 // Récupération des données
 const {data: projects} = await useAsyncData('projects', () => getProjects());
@@ -89,6 +143,16 @@ const shownProjects = computed(() => {
     return p.category === selectedCategory.value;
   });
 });
+
+// LOGIQUE LIGHTBOX
+const isLightboxOpen = ref(false);
+
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') isLightboxOpen.value = false;
+};
+
+onMounted(() => window.addEventListener('keydown', handleKeydown));
+onUnmounted(() => window.removeEventListener('keydown', handleKeydown));
 </script>
 
 <style scoped>
@@ -109,4 +173,8 @@ const shownProjects = computed(() => {
   opacity: 0;
   transform: scale(0.9);
 }
+
+/* Animation Lightbox */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
