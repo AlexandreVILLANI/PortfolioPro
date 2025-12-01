@@ -30,58 +30,36 @@ illustrations:
   - /images/projects/firewatch/controller_firewatch.jpg
 ---
 
-> ⚠️ Le projet est encore à ses débuts et la majorité du travail relève des coulisses (
-> récolte, traitement, et stockage
-> des données).
+> ⚠️ Ce projet est actuellement en phase de développement actif. L'essentiel des efforts se concentre pour l'instant sur l'architecture backend (ingestion, analyse et persistance des données).
 
-# FireWatch : Architecture de surveillance préventive
+# FireWatch : Système proactif de lutte contre les incendies
 
-Dans le cadre de la SAE de 3e année, nous devons répondre à une problématique critique : comment
-réduire le délai entre le départ d'un feu de forêt et l'intervention des secours ?
+Dans le cadre de notre SAE de 3ème année, nous nous attaquons à une course contre la montre vitale : comment minimiser le temps de latence entre l'ignition d'un feu de forêt et l'arrivée des pompiers sur site ?
 
-
-> **C'est quoi une SAE ?**<br>
-> Une SAE, c'est un projet d'évaluation dans le cadre de la formation. Nous avons un cahier des charges et un ensemble
-> de consignes à respecter. Ce travail se fait toujours en équipe, et il peut y avoir entre plusieurs et une sae par
-> année, selon l'année de formation.
+> **Qu'est-ce qu'une SAE ?**<br>
+> Il s'agit d'une Situation d'Apprentissage et d'Évaluation. C'est un projet académique d'envergure, réalisé en équipe, qui simule une commande professionnelle avec un cahier des charges strict. Ces projets jalonnent notre formation pour valider nos compétences en conditions réelles.
 
 <br>
 
-Notre solution? _Firewatch_
+Notre réponse technique : _Firewatch_.
 
-Firewatch est autant un tableau de bord qu'un écosystème complet pour la prévention et détection de feux de forêts.
-Grâce à ses capteurs embarqués disséminés à travers la forêt, l'objectif final est de fournir aux gestionnaires
-forestiers et services de secours de prévenir, détecter prématurément et intervenir dans des délais cours.
+Bien plus qu'un simple tableau de bord, Firewatch est un écosystème de surveillance complet. En maillant le territoire forestier de capteurs connectés, nous offrons aux gestionnaires et aux secours les outils nécessaires pour anticiper les risques, détecter les anomalies précocement et intervenir avec une précision chirurgicale.
 
 ---
 
-<Tondeuse image="/images/projects/firewatch/maquette_mobile.png" ratio="1/4">
+<Tondeuse image="/images/projects/firewatch/mobile.png" ratio="1/4">
 
-### Détection visuelle et analyse à l'IA
+### Surveillance optique et analyse par IA
 
-Le dispositif repose avant tout sur une détection précoce et une surveillance continue de l’environnement forestier.
-Grâce à des caméras installées sur des tours de vigie ainsi qu’à l’utilisation de drones autonomes, il est possible de
-repérer les premiers panaches de fumée et de signaler immédiatement un potentiel départ de feu. Les usagers eux-mêmes
-participent à la vigilance collective : une application mobile simple d’utilisation permet aux randonneurs d’envoyer des
-photos géolocalisées afin de contribuer à l’alerte.
+La première ligne de défense repose sur une observation constante de la canopée. Nous combinons des caméras fixes sur les points hauts pour scanner l'horizon à la recherche de fumées suspectes. Nous impliquons également les citoyens : une application mobile permet aux randonneurs de devenir acteurs de la prévention en signalant des anomalies géolocalisées.
 
-La fiabilité du système repose ensuite sur la qualification rapide et automatisée des alertes recueillies. Pour cela,
-nous avons conçu un pipeline complet de traitement d’images :
+Pour éviter la surcharge d'informations, nous avons développé une chaîne de traitement automatisée capable de qualifier ces alertes :
 
-1. **Ingestion des données :** Les caméras fixes, drones ou téléphones des utilisateurs transmettent leurs images en
-   temps réel à un serveur spécialisé.
-2. **Analyse intelligente :** Un script Python exécute un modèle d’intelligence artificielle entraîné à reconnaître les
-   caractéristiques visuelles associées à la fumée et aux flammes, même en conditions difficiles (contre-jour,
-   brouillard, luminosité variable…).
-3. **Décision assistée :** L’interface de supervision affiche les images annotées par l’IA, avec les zones détectées
-   encadrées et un indice de confiance. L’opérateur peut alors valider ou rejeter l’alerte d’un simple clic, assurant
-   réactivité et fiabilité.
+1. **Centralisation des flux :** Serveurs dédiés à la réception en temps réel des flux vidéo (caméras) et des photos utilisateurs.
+2. **Traitement intelligent :** Un moteur d'analyse (Python) utilise un modèle de Computer Vision entraîné pour distinguer la fumée et les flammes des fausses alertes (nuages, brume, reflets), même en conditions dégradées.
+3. **Aide à la décision :** Le superviseur reçoit une image annotée par l'IA (bounding boxes) accompagnée d'un score de probabilité. Il peut ainsi valider ou écarter l'alerte instantanément.
 
-Ce module permet de limiter efficacement les faux positifs et de transmettre aux services d’intervention des données
-fiables et directement exploitables, incluant la localisation GPS précise, le type de feu suspecté et la source de
-l’alerte.
-Ainsi, l’intervention peut être déclenchée plus tôt, mieux ciblée et potentiellement plus efficace dans la lutte contre
-les incendies.
+Ce filtrage drastique des faux positifs garantit que les équipes d'intervention ne sont mobilisées que sur des menaces avérées, avec toutes les informations tactiques nécessaires (coordonnées GPS exactes, nature du feu, visuel terrain).
 
 </Tondeuse>
 
@@ -89,51 +67,30 @@ les incendies.
 
 <Tondeuse image="/images/projects/firewatch/controller_firewatch.jpg" :inverse="true" ratio="1/4">
 
-### IoT : Du capteur à la donnée
+### IoT : La forêt connectée
 
-Pour renforcer la prévention, nous avons mis en place un réseau de capteurs autonomes basés sur des microcontrôleurs
-ESP32, programmés en C++ via l’environnement Arduino. Ces modules, répartis dans la zone forestière, collectent en
-continu des données environnementales essentielles.
+En complément de la vision, nous déployons un réseau de sentinelles électroniques : des modules autonomes basés sur ESP32 (développés en C++/Arduino). Disséminés dans la végétation, ils monitorent l'environnement en permanence.
 
-Le principal défi technique a consisté à optimiser la gestion du trafic de données, car plusieurs dizaines d’ESP32
-transmettent simultanément des mesures brutes (température, humidité, taux de CO₂, luminosité, etc.). Nous avons donc dû
-concevoir un protocole de communication adapté, garantissant à la fois fiabilité, faible consommation énergétique et
-absence de saturation réseau.
+L'un des défis majeurs a été l'ingénierie réseau : comment gérer l'afflux simultané de données provenant de dizaines de capteurs (Température, Hygrométrie, CO₂, Luminosité) ? Nous avons dû architecturer un protocole de communication sur-mesure, optimisé pour la fiabilité et la sobriété énergétique.
 
-L’ensemble de ces mesures permet de calculer un **Indice de Risque** (IDR) dynamique, reflétant en temps réel la
-probabilité de départ de feu. Si cet indice dépasse un seuil défini, le système génère automatiquement une alerte
-préventive, avant même l’apparition visible de fumée.
+L'agrégation de ces métriques permet de générer un **Indice de Risque (IDR)** en temps réel. Si les conditions deviennent critiques, le système déclenche une alerte préventive avant même qu'une flamme ne soit visible.
 
-Enfin, une interface d’administration assure la supervision du parc de capteurs : elle affiche l’état de
-connexion de chaque module, le niveau de batterie, la dernière communication reçue ainsi que son emplacement sur la
-carte. Cette surveillance garantit que le réseau reste opérationnel et réactif, même dans des zones isolées.
+Enfin, pour assurer la pérennité du dispositif, un dashboard technique permet de monitorer la santé du parc IoT : état des batteries, latence réseau et positionnement cartographique. Cela garantit une couverture opérationnelle sans faille, même en milieu hostile.
 
 </Tondeuse>
 
-
 ---
 
-### Choix d'architecture et Défis Techniques_
+### Architecture Micro-services et Challenges
 
-Pour garantir la robustesse et la scalabilité du système, nous avons opté pour une architecture micro-services
-dockerisée, où chaque technologie est utilisée en fonction de ses points forts spécifiques. Le serveur central de
-réception des données a été développé en Java, afin de bénéficier de la gestion native des threads multiples et de
-maintenir des connexions TCP stables avec l’ensemble des microcontrôleurs. Ce choix s’est imposé pour assurer la
-fiabilité de la collecte des données, un composant critique de tout le système.
+Pour bâtir un système résilient et évolutif, nous avons fait le choix d'une architecture conteneurisée (Docker), tirant parti du meilleur de chaque langage. Le serveur d'ingestion IoT a été codé en **Java** : sa gestion robuste du multi-threading et des sockets TCP est idéale pour maintenir des connexions stables avec une flotte de microcontrôleurs.
 
-Pour la partie API qui sert le frontend, nous avons privilégié Node.js avec Express. Son modèle non-bloquant et orienté
-I/O est particulièrement adapté pour gérer les nombreuses requêtes vers la base de données MongoDB et assurer une
-distribution fluide de l’information aux interfaces utilisateurs. L’un des défis majeurs a été d’orchestrer efficacement
-la communication entre le serveur Java, chargé de recevoir les flux bruts de capteurs, les scripts Python responsables
-de l’analyse et du traitement des données, et l’API Node qui centralise et distribue les résultats. La coordination de
-ces trois composants hétérogènes a été essentielle pour garantir une chaîne de traitement rapide et fiable.
+Pour l'API et le service des données au frontend, nous avons opté pour **Node.js/Express**. Son architecture événementielle non-bloquante excelle pour traiter les requêtes asynchrones vers MongoDB et servir les interfaces utilisateurs. Le véritable défi a résidé dans l'orchestration de ces briques hétérogènes : faire dialoguer le serveur Java (flux bruts), les scripts Python (IA) et l'API Node (distribution) de manière fluide a nécessité une conception rigoureuse des interfaces de communication.
 
-### Stack Technique Détaillée
+### Stack Technique
 
-Le frontend repose sur Vue.js 3 associés à Tailwind pour le style et Apache ECharts pour la visualisation des données
-collectées par les capteurs. Le backend API utilise Node.js, Express et Mongoose pour gérer la logique applicative et
-les interactions avec la base de données. Le backend IoT, quant à lui, est basé sur Java, avec un serveur TCP
-multi-thread capable de supporter une charge importante de connexions simultanées. Côté embarqué, le système repose sur
-des ESP32 programmés en C++, équipés de capteurs DHT22 et SCD41 pour mesurer température, humidité et CO2. Toutes les
-données sont centralisées dans MongoDB, qui stocke à la fois les séries temporelles et les métadonnées associées,
-permettant un suivi complet et une analyse fine de l’état du parc de capteurs.
+* **Frontend :** Vue.js 3 couplé à TailwindCSS pour l'UI, et Apache ECharts pour la dataviz.
+* **Backend API :** Node.js avec Express et Mongoose pour la logique métier.
+* **Backend IoT :** Serveur TCP multi-thread en Java pour la haute performance.
+* **Embarqué :** ESP32 (C++) avec sondes DHT22 (Climat) et SCD41 (CO2).
+* **Data :** MongoDB pour le stockage hybride des séries temporelles (mesures) et des documents (métadonnées).

@@ -3,7 +3,7 @@ title: Belforce
 category:
   - university
   - opensource
-path_id: 24hmans
+path_id: belforce
 date: 2025-11-15T12:56:10.000Z
 image: images/projects/Belforce/Belforce.jpg
 description: "Comment mettre en valeur le patrimoine d’une ville à travers une plateforme moderne et accessible ?
@@ -22,9 +22,6 @@ team:
 project_categories:
   - Développement Web
   - Fullstack
-illustrations:
-  - /images/projects/24hmans/dashboard_provider.png
-  - /images/projects/24hmans/map_interactive.png
 links:
   github: https://github.com/AlexandreVILLANI/SaeTourisme
 ---
@@ -65,7 +62,7 @@ pour informer les visiteurs instantanément.
 ## Immersion et cartographie interactive
 
 Pour l'administrateur comme pour le touriste, l'information doit être géolocalisée. Nous avons intégré une
-carte interactive dynamique (type Mapbox/Leaflet) qui permet de situer les points d'intérêt à travers la ville.
+carte interactive dynamique (Leaflet) qui permet de situer les points d'intérêt à travers la ville.
 Plutôt que de chercher dans des listes, l'utilisateur explore Belfort visuellement pour trouver les activités
 autour de lui.
 

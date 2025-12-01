@@ -41,7 +41,6 @@
           <div class="education-section mt-12">
             <h3 class="section-subtitle">Formation</h3>
             <div class="education-list">
-
               <div class="education-item">
                 <span class="year">En cours</span>
                 <div class="education-details">
@@ -49,7 +48,6 @@
                   <span class="school">IUT NFC Belfort</span>
                 </div>
               </div>
-
               <div class="education-item">
                 <span class="year">2025</span>
                 <div class="education-details">
@@ -57,7 +55,6 @@
                   <span class="school">IUT NFC Belfort</span>
                 </div>
               </div>
-
               <div class="education-item">
                 <span class="year">2023</span>
                 <div class="education-details">
@@ -79,6 +76,23 @@
         </div>
 
         <div class="contact-column relative">
+          
+          <div
+              @click="isLightboxOpen = true"
+              class="polaroid-wrapper group"
+          >
+            <div class="tape"></div>
+
+            <div class="polaroid-card">
+              <NuxtImg
+                  src="/images/background/stripproject.jpg"
+                  alt="stripproject"
+                  class="polaroid-img"
+              />
+              <p class="polaroid-caption">Cliquez pour agrandir</p>
+            </div>
+          </div>
+
           <div class="contact-info">
             <h3 class="contact-title">CONTACT</h3>
             <ul class="contact-list">
@@ -101,28 +115,69 @@
 
       </div>
     </main>
+
+    <Teleport to="body">
+      <Transition name="fade">
+        <div
+            v-if="isLightboxOpen"
+            class="fixed inset-0 z-[9999] flex items-center justify-center bg-[#784421]/90 backdrop-blur-sm p-4"
+            @click.self="isLightboxOpen = false"
+        >
+          <div class="relative max-w-5xl w-full flex flex-col items-center">
+            <button
+                @click="isLightboxOpen = false"
+                class="absolute -top-12 right-0 md:-right-8 text-[#FEFBF3] hover:text-white hover:scale-110 transition-transform"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </button>
+            <div class="bg-[#FEFBF3] p-2 md:p-4 rounded shadow-2xl">
+              <NuxtImg
+                  src="/images/background/stripproject.jpg"
+                  alt="stripproject"
+                  class="max-h-[70vh] w-auto object-contain rounded-sm"
+              />
+            </div>
+            <div class="mt-6 text-center">
+              <h4 class="text-2xl md:text-3xl text-[#FEFBF3] font-bricolage font-bold uppercase tracking-widest">
+                Planche de surf - Strip Project
+              </h4>
+              <p class="text-[#FEFBF3]/80 font-serif italic text-lg mt-2">
+                « La mer est un miroir dans lequel chacun peut reconnaître son âme. » Paul Claudel <br>
+                <span class="text-sm opacity-60 not-italic font-sans">Photographie personnelle</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
   </div>
 </template>
 
 <script setup lang="ts">
-// Données séparées pour une meilleure organisation
-const devSkills = [
-  'HTML / CSS', 'JavaScript', 'PHP', 'Java', 'Python',
-  'SQL', 'Node.js', 'Vue.js', 'Angular', 'Swift'
-]
+import { ref, onMounted, onUnmounted } from 'vue';
 
-const toolSkills = [
-  'VS Code', 'IntelliJ', 'Postman', 'Git / GitHub', 'GitLab',
-  'Jupyter Notebook', 'Docker', 'Trello'
-]
+const isLightboxOpen = ref(false);
 
-const dbSkills = [
-  'MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB'
-]
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') isLightboxOpen.value = false;
+};
+
+onMounted(() => window.addEventListener('keydown', handleKeydown));
+onUnmounted(() => window.removeEventListener('keydown', handleKeydown));
+
+// --- DATA ---
+const devSkills = [ 'HTML / CSS', 'JavaScript', 'PHP', 'Java', 'Python', 'SQL', 'Node.js', 'Vue.js', 'Angular', 'Swift' ]
+const toolSkills = [ 'VS Code', 'IntelliJ', 'Postman', 'Git / GitHub', 'GitLab', 'Jupyter Notebook', 'Docker', 'Trello' ]
+const dbSkills = [ 'MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB' ]
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+.font-bricolage {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
 
 .page-container {
   width: 100%;
@@ -191,10 +246,10 @@ const dbSkills = [
   .bio-text { font-size: 1.5rem; }
 }
 
-/* --- STYLES DES COMPÉTENCES (Catégories) --- */
+/* --- SKILLS & FORMATION --- */
 .category-title {
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 0.9rem; /* Un peu plus petit que le titre de section principal */
+  font-size: 0.9rem;
   font-weight: 700;
   color: #784421;
   margin-bottom: 0.8rem;
@@ -220,7 +275,7 @@ const dbSkills = [
   border-radius: 999px;
   transition: all 0.3s ease;
   cursor: default;
-  background-color: rgba(120, 68, 33, 0.05); /* Fond très léger */
+  background-color: rgba(120, 68, 33, 0.05);
 }
 
 .tech-list li:hover {
@@ -229,11 +284,7 @@ const dbSkills = [
   transform: translateY(-2px);
 }
 
-/* --- FORMATION --- */
-.education-section {
-  margin-top: 3.5rem; /* Un peu d'espace avant la formation */
-}
-
+.education-section { margin-top: 3.5rem; }
 .section-subtitle {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 1rem;
@@ -246,19 +297,8 @@ const dbSkills = [
   padding-bottom: 0.5rem;
   display: inline-block;
 }
-
-.education-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.education-item {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-}
-
+.education-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.education-item { display: flex; align-items: baseline; gap: 1.5rem; }
 .year {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
@@ -266,12 +306,6 @@ const dbSkills = [
   color: #784421;
   min-width: 3.5rem;
 }
-
-.education-details {
-  display: flex;
-  flex-direction: column;
-}
-
 .degree {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 600;
@@ -279,7 +313,6 @@ const dbSkills = [
   color: #382E28;
   line-height: 1.2;
 }
-
 .school {
   font-family: 'EB Garamond', serif;
   font-style: italic;
@@ -289,7 +322,7 @@ const dbSkills = [
   margin-top: 0.2rem;
 }
 
-/* --- PHOTO --- */
+/* --- COLONNE CENTRALE (Juste le portrait) --- */
 .image-column {
   display: flex;
   justify-content: center;
@@ -304,7 +337,7 @@ const dbSkills = [
   object-fit: cover;
 }
 
-/* --- CONTACT --- */
+/* --- COLONNE DROITE (Contact + Polaroid + Fleur) --- */
 .contact-column {
   display: flex;
   flex-direction: column;
@@ -312,6 +345,70 @@ const dbSkills = [
   min-height: 300px;
 }
 
+/* Style du Polaroid ajusté pour la colonne de droite */
+.polaroid-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 250px; /* Limite la taille pour la colonne de droite */
+  margin: 0 auto 3rem auto; /* Centre et marge en bas */
+  transform: rotate(3deg);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.polaroid-wrapper:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.tape {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 80px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  z-index: 20;
+}
+
+.polaroid-card {
+  background-color: #FEFBF3;
+  border: 8px solid #FEFBF3;
+  padding: 10px 10px 35px 10px;
+  box-shadow: 0 4px 15px rgba(120, 68, 33, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.polaroid-wrapper:hover .polaroid-card {
+  box-shadow: 0 8px 25px rgba(120, 68, 33, 0.3);
+}
+
+.polaroid-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  filter: sepia(0.3);
+  transition: filter 0.3s ease;
+}
+
+.polaroid-wrapper:hover .polaroid-img {
+  filter: sepia(0);
+}
+
+.polaroid-caption {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #784421;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: -25px;
+}
+
+/* Contact Styles */
 .contact-title {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 0.8rem;
@@ -322,16 +419,8 @@ const dbSkills = [
   text-transform: uppercase;
 }
 
-.contact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.contact-list li {
-  margin-bottom: 0.5rem;
-}
-
+.contact-list { list-style: none; padding: 0; margin: 0; }
+.contact-list li { margin-bottom: 0.5rem; }
 .contact-list a {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 1rem;
@@ -341,16 +430,17 @@ const dbSkills = [
   text-decoration-thickness: 1px;
   transition: opacity 0.3s;
 }
+.contact-list a:hover { opacity: 0.6; }
 
-.contact-list a:hover {
-  opacity: 0.6;
-}
-
-/* --- FLEUR --- */
+/* Fleur */
 .flower-icon {
   align-self: flex-end;
   margin-top: auto;
   padding-top: 2rem;
   transform: rotate(-10deg);
 }
+
+/* Lightbox Animations */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
