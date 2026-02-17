@@ -123,22 +123,26 @@
               @change="touchedFields.consent = true; clearFieldError('consent')"
           >
           <div
-              class="w-5 h-5 rounded border transition-all duration-200 flex items-center justify-center"
-              :class="touchedFields.consent && errors.consent ? 'border-[#FF6B35] bg-[#FF6B35]/10' : 'border-[#F3EFE0] bg-[#F3EFE0] hover:scale-110'"
+            class="w-5 h-5 rounded border transition-all duration-200 flex items-center justify-center"
+            :class="[
+              touchedFields.consent && errors.consent 
+                  ? 'border-[#FF6B35] bg-[#FF6B35]/10'  /* On garde rouge/orange uniquement pour l'erreur */
+                  : (acceptDataTreatment ? 'bg-[#9B59B6] border-[#9B59B6]' : 'border-[#F3EFE0] bg-transparent hover:scale-110')
+            ]"
+        >
+          <svg
+              class="w-3.5 h-3.5 text-[#F3EFE0] opacity-0 peer-checked:opacity-100 transition-opacity duration-200 font-bold"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
           >
-            <svg
-                class="w-3.5 h-3.5 text-[#4A235A] opacity-0 peer-checked:opacity-100 transition-opacity duration-200 font-bold"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
         </div>
         <span class="text-justify text-[#F3EFE0]/80 group-hover:text-[#F3EFE0] transition-colors text-xs font-light leading-relaxed">
           En soumettant ce formulaire, j'accepte que mes données soient utilisées pour me recontacter.
@@ -175,16 +179,16 @@
     </Transition>
 
     <Button
-        type="submit"
-        :disabled="isSubmitting || !isFormValid"
-        class="group flex flex-row gap-2 items-center justify-center w-full !rounded-full !px-8 !py-4 transition-all duration-300 mt-4 border-2"
-        :class="{
-          'opacity-50 cursor-not-allowed bg-[#F3EFE0]/50': isSubmitting,
-          'opacity-50 cursor-not-allowed border-[#F3EFE0]/30 text-[#F3EFE0]/50': !isFormValid && !isSubmitting,
-          'bg-[#F3EFE0] border-[#F3EFE0] text-[#4A235A] hover:bg-transparent hover:text-[#F3EFE0] cursor-pointer shadow-[0_0_20px_rgba(243,239,224,0.3)] hover:shadow-none': isFormValid && !isSubmitting
-        }"
+      type="submit"
+      :disabled="isSubmitting || !isFormValid"
+      class="group flex flex-row gap-2 items-center justify-center w-full !rounded-full !px-8 !py-4 transition-all duration-300 mt-4 border-2"
+      :class="{
+        'opacity-50 cursor-not-allowed bg-[#F3EFE0]/10 border-transparent text-[#F3EFE0]/50': isSubmitting,
+        'opacity-50 cursor-not-allowed border-[#F3EFE0]/30 text-[#F3EFE0]/50 bg-transparent': !isFormValid && !isSubmitting,
+        'bg-[#9B59B6] border-[#9B59B6] text-[#F3EFE0] hover:bg-[#8E44AD] hover:border-[#8E44AD] cursor-pointer shadow-lg hover:shadow-[0_0_15px_rgba(155,89,182,0.5)] hover:-translate-y-1': isFormValid && !isSubmitting
+      }"
     >
-      <span v-if="isSubmitting" class="animate-spin h-5 w-5 border-2 border-[#4A235A] border-t-transparent rounded-full mr-2"></span>
+      <span v-if="isSubmitting" class="animate-spin h-5 w-5 border-2 border-[#F3EFE0] border-t-transparent rounded-full mr-2"></span>
 
       <span class="text-lg font-bold uppercase tracking-wider">
           {{ isSubmitting ? 'Envoi...' : 'Envoyer le message' }}
