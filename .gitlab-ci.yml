@@ -1,0 +1,27 @@
+image: node:20
+
+pages:
+  image: node:20-alpine
+  variables:
+    NUXT_TELEMETRY_DISABLED: "1"
+  before_script:
+    - corepack enable
+    - yarn config set enableTelemetry 0
+    - yarn install --frozen-lockfile --production=false
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules/
+  script:
+    - NODE_ENV="production"
+    - npx nuxi generate
+  artifacts:
+    paths:
+      - .output/public
+  publish: .output/public
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "web"'
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
