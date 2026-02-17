@@ -80,6 +80,27 @@
               <li v-for="item in softSkills" :key="item">{{ item }}</li>
             </ul>
           </div>
+          <div class="skills-group mt-12 w-full max-w-[400px]">
+            <h3 class="category-title text-center">Veille Informatique</h3>
+            
+            <div class="mb-4">
+              <p class="text-center font-serif italic text-sm text-[#784421] mb-2">Thématiques</p>
+              <ul class="tech-list justify-center">
+                <li v-for="topic in watchTopics" :key="topic" class="border-dashed!">
+                  {{ topic }}
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-center font-serif italic text-sm text-[#784421] mb-2">Sources principales</p>
+              <ul class="tech-list justify-center">
+                <li v-for="source in watchSources" :key="source">
+                  {{ source }}
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div class="contact-column relative">
@@ -178,6 +199,8 @@ const devSkills = [ 'HTML / CSS', 'JavaScript', 'PHP', 'Java', 'Python', 'SQL', 
 const toolSkills = [ 'VS Code', 'IntelliJ', 'Postman', 'Git / GitHub', 'GitLab', 'Jupyter Notebook', 'Docker', 'Trello', 'Oracle Virtualbox' ]
 const dbSkills = [ 'MySQL', 'MariaDB', 'PostgreSQL', 'MongoDB' ]
 const softSkills = [ 'Curiosité', 'Travail d\'équipe', 'Adaptabilité','Patience','Écoute','Ésprit d\'équipe' ]
+const watchTopics = [ 'Intelligence Artificielle', 'Cybersécurité', 'Innovation technologique', 'Développement Mobile' ]
+const watchSources = [ 'Journal du Geek', 'Presse-citron', 'Frandroid', 'Youtube (Underscore_, ici Amy Plant)' ]
 </script>
 
 <style scoped>
@@ -330,12 +353,17 @@ const softSkills = [ 'Curiosité', 'Travail d\'équipe', 'Adaptabilité','Patien
   margin-top: 0.2rem;
 }
 
+.border-dashed {
+  border-style: dashed !important;
+  background-color: transparent !important;
+}
+
 /* --- COLONNE CENTRALE (Portrait + Soft Skills) --- */
 .image-column {
   display: flex;
   flex-direction: column; 
   align-items: center;    
-  justify-content: flex-start;
+  text-align: center;
 }
 
 .portrait {
