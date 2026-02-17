@@ -21,8 +21,12 @@
           <p class="text-[#4A235A]/80 text-lg">Retrouvez-moi aussi sur ces plateformes :</p>
         </div>
 
-        <div class="bg-white/50 p-6 rounded-3xl border border-[#4A235A]/10">
-          <Networks :show-full="true" :sizePx="40" class="text-[#4A235A] flex-col gap-6 w-full"/>
+        <div class="bg-[#4A235A] p-6 rounded-3xl shadow-lg">
+          <Networks 
+            :show-full="true" 
+            :sizePx="40" 
+            class="text-[#F3EFE0] flex-col gap-6 w-full"
+          />
         </div>
 
         <div class="flex flex-col gap-4 mt-4">
