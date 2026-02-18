@@ -8,12 +8,15 @@
     </main>
     
     <Footer/>
+    
+    <SpeedInsights />
   </div>
 </template>
 
 <script setup lang="ts">
 import Navbar from "~/components/navigation/Navbar.vue";
 import Footer from "~/components/navigation/Footer.vue";
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 
 // Intégration du logo comme icône du site (Favicon)
 useHead({
