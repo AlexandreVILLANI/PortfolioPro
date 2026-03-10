@@ -2,10 +2,12 @@
   <NuxtLayout>
     <NuxtPage/>
   </NuxtLayout>
+  <Analytics />
 </template>
 
 <script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css';
+import { Analytics } from '@vercel/analytics/nuxt';
 
 useSeoMeta({
   ...defaultSeoTags("Alexandre VILLANI | Portfolio", "Portfolio de Alexandre VILLANI, Développeur FullStack")
