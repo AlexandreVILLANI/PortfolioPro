@@ -4,7 +4,7 @@ category:
   - university
   - opensource
 path_id: belforce
-date: 2025-11-15T12:56:10.000Z
+date: 2026-01-20T12:56:10.000Z
 image: /images/projects/Belforce/Belforce.jpg
 description: "Comment mettre en valeur le patrimoine d’une ville à travers une plateforme moderne et accessible ? Ce projet vise à professionnaliser la promotion touristique de Belfort grâce à un site web complet pour les habitants, les visiteurs et les acteurs locaux."
 technologies:
