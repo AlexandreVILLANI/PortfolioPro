@@ -22,9 +22,10 @@ project_categories:
   - Application Mobile
 links:
   github: https://github.com/pedrohdmramalho/bip-project/
+  
 ---
 
-> Réalisé dans le cadre d’un **Blended Itensive Programme (BIP)** réunissant des étudiants de plusieurs universités européennes, ce projet avait pour objectif de concevoir une application mobile favorisant la détente et le bien-être.
+> Réalisé dans le cadre d'un **Blended Itensive Programme (BIP)** réunissant des étudiants de plusieurs universités européennes, ce projet avait pour objectif de concevoir une application mobile favorisant la détente et le bien-être. 
 
 # Mindful Journey : Une application mobile dédiée à la relaxation
 
