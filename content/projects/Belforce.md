@@ -37,7 +37,7 @@ L’objectif était double : offrir aux visiteurs un **compagnon de voyage numé
 
 <Tondeuse image="/images/projects/Belforce/Prestation.jpg" ratio="1/3">
 
-## Une gestion flexible de l'offre locale
+## Une gestion flexible  de l'offre locale
 
 Le cœur du système réside dans l'autonomie offerte aux acteurs économiques. Nous avons développé un **back-office complet** permettant aux prestataires de piloter leur activité. L'objectif était de couvrir une typologie d'offres très large : culture, gastronomie, hôtellerie ou événementiel.
 
