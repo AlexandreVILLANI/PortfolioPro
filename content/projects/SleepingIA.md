@@ -12,7 +12,7 @@ technologies:
   - LLM / IA Générative
 team:
   - Alexandre VILLANI
-  - Cédric COLLIN
+  - Cédric COLIN
   - Marvyn LEVIN
 project_categories:
   - Data Science & ML
