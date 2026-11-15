@@ -96,7 +96,6 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown));
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 
 /* --- LAYOUT PRINCIPAL --- */
 .hero-section {

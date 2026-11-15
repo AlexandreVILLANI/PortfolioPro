@@ -25,7 +25,6 @@ useHead({
 
 <style>
 /* Import de la police si elle n'est pas déjà dans nuxt.config */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 
 /* Définition de la classe de police globale */
 .font-bricolage {

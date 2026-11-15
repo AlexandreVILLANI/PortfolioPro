@@ -211,7 +211,6 @@ const watchSources = [ 'Journal du Geek', 'Presse-citron', 'Frandroid', 'Youtube
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
 .font-bricolage {
   font-family: 'Bricolage Grotesque', sans-serif;

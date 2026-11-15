@@ -393,7 +393,6 @@ async function submitForm() {
 
 <style scoped>
 /* Import de la police si elle n'est pas globale */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 
 .font-bricolage {
   font-family: 'Bricolage Grotesque', sans-serif;

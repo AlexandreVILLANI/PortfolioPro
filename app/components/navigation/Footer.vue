@@ -50,7 +50,6 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <style scoped>
-/* @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap'); */
 
 footer {
   /* Au cas où la police ne charge pas, fallback propre */
