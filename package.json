@@ -19,7 +19,6 @@
     "nuxt": "^4.2.0",
     "nuxt-link-checker": "^4.3.6",
     "nuxt-og-image": "^5.1.12",
-    "nuxt-skew-protection": "^0.3.0",
     "simple-analytics-vue": "^3.1.0",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3",

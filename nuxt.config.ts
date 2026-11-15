@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     },
 
     modules: [
-        'nuxt-skew-protection',
         'nuxt-og-image',
         'nuxt-link-checker',
         '@nuxt/image',
