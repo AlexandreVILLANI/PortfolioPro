@@ -10,7 +10,7 @@
         </h1>
 
         <h2 class="subtitle">
-          Étudiant en BUT 3 Informatique - Développeur FullStack Junior
+          Étudiant en Master 1 INASYS (Master Ingénierie IA et Santé) 
         </h2>
 
         <div class="cta-container">

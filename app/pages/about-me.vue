@@ -11,7 +11,7 @@
 
         <div class="text-column">
           <p class="bio-text">
-            <span class="font-bold">Alexandre VILLANI</span>, étudiant en troisième année de <span class="font-bold">Bachelor Universitaire de Technologie Informatique</span> à Belfort, vous souhaite la bienvenue. Ce portfolio est le fruit de mes trois années de formation et de l'acquisition de compétences dans le domaine de l'informatique.
+            <span class="font-bold">Alexandre VILLANI</span>, étudiant en première année de <span class="font-bold">Master Ingénierie IA et Santé (INASYS)</span> à Besançon, vous souhaite la bienvenue. Ce portfolio est le fruit de mes quatres années de formation et de l'acquisition de compétences dans le domaine de l'informatique et de l'intelligence artificiellelle.
           </p>
           <p class="bio-text mt-8">
             Mes centres d'intérêt sont la photographie et l'informatique. C'est pourquoi vous trouverez ici des réalisations variées : projets académiques, expériences professionnelles (stage) et mes initiatives personnelles.
@@ -42,9 +42,16 @@
             <h3 class="section-subtitle">Formation</h3>
             <div class="education-list">
               <div class="education-item">
-                <span class="year">En cours</span>
+                <span class="year">2026 - 2028</span>
                 <div class="education-details">
-                  <span class="degree">Bachelor Universitaire de Technologie</span>
+                  <span class="degree">Master Ingénierie IA et Santé (INASYS)</span>
+                  <span class="school">Besançon</span>
+                </div>
+              </div>
+              <div class="education-item">
+                <span class="year">2026</span>
+                <div class="education-details">
+                  <span class="degree">Bachelor Universitaire de Technologie (BUT)</span>
                   <span class="school">IUT NFC Belfort</span>
                 </div>
               </div>
