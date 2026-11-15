@@ -8,7 +8,7 @@
 import 'vue3-carousel/dist/carousel.css';
 
 useSeoMeta({
-  ...defaultSeoTags("Alexandre VILLANI | Portfolio", "Portfolio de Alexandre VILLANI, Développeur FullStack")
+  ...defaultSeoTags("Alexandre VILLANI | Portfolio", "Portfolio de Alexandre VILLANI")
 });
 
 useHead({
